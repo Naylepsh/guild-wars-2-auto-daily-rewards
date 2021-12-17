@@ -1,4 +1,7 @@
-- username: example@mail.com
+# For each account that you have, copy and fill in the following
+# - email: your-email
+#   password: your-password
+- email: example@mail.com
   password: myPassword123
-- username: some-other@mail.org
+- email: some-other@mail.org
   password: someOtherPassword456

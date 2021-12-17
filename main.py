@@ -8,14 +8,14 @@ import yaml
 
 @dataclass
 class Credentials:
-    username: str
+    email: str
     password: str
 
 
 def get_credentials() -> List[Credentials]:
     with open('./accounts.yml', 'r', encoding='utf-8') as f:
         credentials = yaml.full_load(f)
-        return list(map(lambda creds: Credentials(username=creds['username'], password=creds['password']), credentials))
+        return list(map(lambda creds: Credentials(email=creds['email'], password=creds['password']), credentials))
 
 
 def double_click(button='left') -> None:
@@ -45,16 +45,16 @@ def login(credentials: Optional[Credentials] = None) -> None:
         pyautogui.write(data)
         sleep(1)
 
-    def enter_username() -> None:
+    def enter_email() -> None:
         pyautogui.moveTo(520, 560)
-        enter_input(credentials.username)
+        enter_input(credentials.email)
 
     def enter_password() -> None:
         pyautogui.moveTo(520, 640)
         enter_input(credentials.password)
 
     if credentials:
-        enter_username()
+        enter_email()
         enter_password()
 
     pyautogui.moveTo(x=480, y=720)
