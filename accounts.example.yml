@@ -1,0 +1,4 @@
+- username: example@mail.com
+  password: myPassword123
+- username: some-other@mail.org
+  password: someOtherPassword456
