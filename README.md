@@ -16,5 +16,6 @@ This script logs in to each account specified in `accounts.yml` and acquires the
 
 ## How to run
 
+- install the dependencies `poetry install` (only have to do the first time)
 - create and fill `accounts.yml` with your credentials (example file: `accounts.example.yml`)
 - run `poetry run python main.py`
