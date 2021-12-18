@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from time import sleep
-from typing import Optional, List
+from typing import Optional, Iterable, Generator, Tuple
 
 import pyautogui
 import yaml
@@ -12,10 +12,10 @@ class Credentials:
     password: str
 
 
-def get_credentials() -> List[Credentials]:
+def get_credentials() -> Iterable[Credentials]:
     with open('./accounts.yml', 'r', encoding='utf-8') as f:
         credentials = yaml.full_load(f)
-        return list(map(lambda creds: Credentials(email=creds['email'], password=creds['password']), credentials))
+        return map(lambda creds: Credentials(email=creds['email'], password=creds['password']), credentials)  # noqa
 
 
 def double_click(button='left') -> None:
@@ -68,7 +68,7 @@ def launch_game() -> None:
 
 def select_first_character() -> None:
     def enforce_click() -> None:
-        # For whatever reason double clicking through pyautogui is not enough, but more clicks somehow works
+        # For whatever reason double clicking through pyautogui is not enough, but more clicks somehow works # noqa
         for _ in range(5):
             pyautogui.click()
 
@@ -77,11 +77,17 @@ def select_first_character() -> None:
 
 
 def open_reward() -> None:
-    top_right = (1860, 1030)
-    bottom_right = (1860, 680)
+    def generate_locations() -> Generator[Tuple[int, int], None, None]:
+        x = 1860
+        top_y = 680
+        bottom_y = 1030
+        reward_icon_size = 50
+        y_delta = reward_icon_size // 2
 
-    rewards_locations = [top_right, bottom_right]
-    for location in rewards_locations:
+        for y in range(top_y, bottom_y + y_delta, y_delta):
+            yield x, y
+
+    for location in generate_locations():
         pyautogui.moveTo(*location)
         double_click(button='right')
 
