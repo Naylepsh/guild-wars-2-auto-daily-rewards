@@ -8,6 +8,7 @@ authors = ["naylepsh <naylepsh@gmail.com>"]
 python = "^3.9"
 PyAutoGUI = "^0.9.53"
 PyYAML = "^6.0"
+Pillow = "^8.4.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from time import sleep
 from typing import Optional, Iterable, Generator, Tuple
+import PIL
 
 import pyautogui
 import yaml
@@ -72,13 +73,13 @@ def select_first_character() -> None:
         for _ in range(5):
             pyautogui.click()
 
-    pyautogui.moveTo(380, 980)
+    pyautogui.moveTo(755, 980)
     enforce_click()
 
 
 def open_reward() -> None:
     def generate_locations() -> Generator[Tuple[int, int], None, None]:
-        x = 1860
+        x = 1900
         top_y = 680
         bottom_y = 1030
         reward_icon_size = 50
@@ -104,6 +105,10 @@ def main() -> None:
         sleep(10)
         login(credentials)
         sleep(5)
+        if (pyautogui.locateOnScreen('RemindMeLater.png') is not None):
+            location = pyautogui.locateOnScreen('RemindMeLater.png')
+            pyautogui.click(location)
+            sleep(5)
         launch_game()
         sleep(20)
         select_first_character()
