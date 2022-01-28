@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from time import sleep
 from typing import Optional, Iterable, Generator, Tuple
-import PIL
 
 import pyautogui
 import yaml
@@ -79,7 +78,7 @@ def select_first_character() -> None:
 
 def open_reward() -> None:
     def generate_locations() -> Generator[Tuple[int, int], None, None]:
-        x = 1900
+        x = 1880
         top_y = 680
         bottom_y = 1030
         reward_icon_size = 50
@@ -99,16 +98,20 @@ def quit_game() -> None:
     pyautogui.keyUp('alt')
 
 
+def check_for_remind_me_later() -> None:
+    if (pyautogui.locateOnScreen('RemindMeLater.png') is not None):
+        location = pyautogui.locateOnScreen('RemindMeLater.png')
+        pyautogui.click(location)
+        sleep(5)
+
+
 def main() -> None:
     for credentials in get_credentials():
         open_gw2_launcher()
         sleep(10)
         login(credentials)
         sleep(5)
-        if (pyautogui.locateOnScreen('RemindMeLater.png') is not None):
-            location = pyautogui.locateOnScreen('RemindMeLater.png')
-            pyautogui.click(location)
-            sleep(5)
+        check_for_remind_me_later()
         launch_game()
         sleep(20)
         select_first_character()
