@@ -1,10 +1,15 @@
 import argparse
 from enum import Enum
+from typing import List
 
 
 class Resolution(Enum):
-    FHD = 1
-    WQHD = 2
+    FHD = "FHD"
+    WQHD = "WQHD"
+
+    @staticmethod
+    def values() -> List[str]:
+        return [res.value for res in Resolution._member_map_.values()]
 
 
 class EnumAction(argparse.Action):
@@ -43,7 +48,7 @@ parser.add_argument(
     "--resolution",
     dest="resolution",
     type=Resolution,
-    help="an integer for the accumulator",
+    help=f"One of the following: {','.join(Resolution.values())}",
 )
 
 
