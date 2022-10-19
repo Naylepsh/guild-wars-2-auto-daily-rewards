@@ -14,8 +14,8 @@ This script logs in to each account specified in `accounts.yml` and acquires the
   with `(Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
   ` in powershell on Windows)
 
-## How to run
+## Usage
 
 - install the dependencies `poetry install` (only have to do it the first time)
 - create and fill `accounts.yml` with your credentials (example file: `accounts.example.yml`)
-- run `poetry run python main.py`
+- run `poetry run python -m main --help` for the available commands
