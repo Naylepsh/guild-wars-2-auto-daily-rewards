@@ -8,9 +8,11 @@ authors = ["naylepsh <naylepsh@gmail.com>"]
 python = "^3.9"
 PyAutoGUI = "^0.9.53"
 PyYAML = "^6.0"
-Pillow = "^9.0.1"
+Pillow = "^8.4.0"
+pyperclip = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
+black = {version = "^22.10.0", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
