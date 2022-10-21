@@ -82,8 +82,8 @@ def _quit_game() -> None:
 
 
 def _check_for_remind_me_later() -> None:
-    if pyautogui.locateOnScreen("RemindMeLater.png") is not None:
-        location = pyautogui.locateOnScreen("RemindMeLater.png")
+    location = pyautogui.locateOnScreen("RemindMeLater.png")
+    if location is not None:
         pyautogui.click(location)
         sleep(5)
 
