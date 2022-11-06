@@ -15,18 +15,11 @@ def clear_input() -> None:
 
 
 def write_input(input: str) -> None:
-    for char in input:
-        if char in SPECIAL_CHARS:
-            pyperclip.copy(char)
-            paste()
-        else:
-            pyautogui.write(char)
+    pyperclip.copy(input)
+    paste()
 
 
 def paste() -> None:
     pyautogui.keyDown("ctrl")
     pyautogui.press("v")
     pyautogui.keyUp("ctrl")
-
-
-SPECIAL_CHARS = "+"
