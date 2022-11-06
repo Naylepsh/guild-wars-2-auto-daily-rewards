@@ -68,6 +68,10 @@ def _open_reward(coordinates: Coordinates) -> None:
 def _open_program(name: str) -> None:
     pyautogui.press("win")
     pyautogui.write(name)
+    # A slight delay before confirming selection is needed.
+    # Otherwise, either a different program may be opened
+    # (or nothing at all can happen as well)
+    sleep(2)
     pyautogui.press("enter")
 
 
