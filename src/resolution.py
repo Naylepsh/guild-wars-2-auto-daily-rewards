@@ -23,17 +23,17 @@ class ResolutionCoordinates:
 
 
 FHD = ResolutionCoordinates(
-    email=(520, 560),
-    password=(520, 640),
-    login=(480, 720),
+    email=(520, 540),
+    password=(520, 620),
+    login=(480, 700),
     play=(1200, 840),
     character=(755, 980),
     rewards=RewardsCoordinates(x=1880, top_y=680, bottom_y=1030),
 )
 WQHD = ResolutionCoordinates(
-    email=(760, 730),
-    password=(760, 810),
-    login=(800, 900),
+    email=(760, 710),
+    password=(760, 790),
+    login=(800, 880),
     play=(1500, 1000),
     # TODO:
     character=(-1, -1),
