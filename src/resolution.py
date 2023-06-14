@@ -35,7 +35,6 @@ WQHD = ResolutionCoordinates(
     password=(760, 790),
     login=(800, 880),
     play=(1500, 1000),
-    # TODO:
-    character=(-1, -1),
-    rewards=RewardsCoordinates(x=-1, top_y=-1, bottom_y=-1),
+    character=(1050, 1350),
+    rewards=RewardsCoordinates(x=2490, top_y=1380, bottom_y=920),
 )
