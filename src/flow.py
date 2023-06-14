@@ -6,30 +6,24 @@ from src.credentials import Credentials
 from src.resolution import Coordinates, ResolutionCoordinates
 
 
+def _enter_input(data: str) -> None:
+    double_click()
+    sleep(1)
+    clear_input()
+    sleep(1)
+    write_input(data)
+    sleep(1)
+
+
 def _login(credentials: Credentials, coordinates: ResolutionCoordinates) -> None:
-    def enter_input(data: str) -> None:
-        double_click()
-        sleep(1)
-        clear_input()
-        sleep(1)
-        write_input(data)
-        sleep(1)
+    pyautogui.moveTo(*coordinates.email)
+    _enter_input(credentials.email)
 
-    def enter_email() -> None:
-        pyautogui.moveTo(*coordinates.email)
-        enter_input(credentials.email)
+    pyautogui.moveTo(*coordinates.password)
+    _enter_input(credentials.password)
 
-    def enter_password() -> None:
-        pyautogui.moveTo(*coordinates.password)
-        enter_input(credentials.password)
-
-    def confirm() -> None:
-        pyautogui.moveTo(*coordinates.login)
-        double_click()
-
-    enter_email()
-    enter_password()
-    confirm()
+    pyautogui.moveTo(*coordinates.login)
+    double_click()
 
 
 def _launch_game(coordinates: ResolutionCoordinates) -> None:
@@ -96,13 +90,13 @@ def run(credentials: Credentials, coordinates: ResolutionCoordinates) -> None:
     _open_gw2_launcher()
     sleep(10)
     _login(credentials, coordinates)
-    sleep(5)
-    _check_for_remind_me_later()
-    _launch_game(coordinates)
-    sleep(20)
-    _select_first_character(coordinates)
-    sleep(20)
-    _open_reward(coordinates)
-    sleep(3)
-    _quit_game()
-    sleep(5)
+    # sleep(5)
+    # _check_for_remind_me_later()
+    # _launch_game(coordinates)
+    # sleep(20)
+    # _select_first_character(coordinates)
+    # sleep(20)
+    # _open_reward(coordinates)
+    # sleep(3)
+    # _quit_game()
+    # sleep(5)

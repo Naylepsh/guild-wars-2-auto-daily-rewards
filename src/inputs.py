@@ -1,5 +1,10 @@
+from typing import Union
+from time import sleep
 import pyautogui
 import pyperclip
+from pynput.keyboard import Key, Controller
+
+keyboard = Controller()
 
 
 def double_click(button="left") -> None:
@@ -8,10 +13,9 @@ def double_click(button="left") -> None:
 
 
 def clear_input() -> None:
-    pyautogui.keyDown("ctrl")
-    pyautogui.press("a")
-    pyautogui.keyUp("ctrl")
-    pyautogui.press("backspace")
+    with keyboard.pressed(Key.ctrl_l):
+        _press("a")
+    _press(Key.backspace)
 
 
 def write_input(input: str) -> None:
@@ -20,6 +24,11 @@ def write_input(input: str) -> None:
 
 
 def paste() -> None:
-    pyautogui.keyDown("ctrl")
-    pyautogui.press("v")
-    pyautogui.keyUp("ctrl")
+    with keyboard.pressed(Key.ctrl_l):
+        _press("v")
+
+
+def _press(key: Union[str, Key]) -> None:
+    keyboard.press(key)
+    sleep(1)
+    keyboard.release(key)
